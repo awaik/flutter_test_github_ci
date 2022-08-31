@@ -6,7 +6,7 @@ on:
       - "v*.*.*" # on every version tag will build a new android artifact.
 jobs:
   build:
-    name: Build APK
+    name: Build APK & AppBundle
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,7 +19,7 @@ jobs:
         with:
           flutter-version: "3.0.5"
 
-      - name: Decoding android/key.properties
+      - name: Decoding android/upload-keystore.jks
         run: |
         echo "${{ secrets.RELEASE_KEYSTORE }}" > upload-keystore.jks.asc
         gpd -d --passphrase echo "${{ secrets.RELEASE_KEYSTORE_SECRET }}" --batch upload-keystore.jks.asc > upload-keystore.jks
@@ -34,7 +34,7 @@ jobs:
         run: flutter build appbundle --release
 
       - name: Create Github Release
-        uses: ncipollo/release-action@v3
+        uses: flutter_test_github_ci/release-action@v3
         with:
           artifacts: "build/app/outputs/apk/release/*.apk,build/app/outputs/bundle/release/*.aab"
           token: ${{ secrets.RELEASES_TOKEN }}
