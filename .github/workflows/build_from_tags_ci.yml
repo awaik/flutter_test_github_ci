@@ -19,10 +19,10 @@ jobs:
         with:
           flutter-version: "3.0.5"
 
-      - name: Setup Java
-        run: |
-          echo "${{ secrets.RELEASE_KEYSTORE }}" > upload-keystore.jks.asc
-          gpd -d --passphrase echo "${{ secrets.RELEASE_KEYSTORE_SECRET }}" --batch upload-keystore.jks.asc > upload-keystore.jks
+#      - name: Setup Java
+#        run: |
+#          echo "${{ secrets.RELEASE_KEYSTORE }}" > upload-keystore.jks.asc
+#          gpd -d --passphrase echo "${{ secrets.RELEASE_KEYSTORE_SECRET }}" --batch upload-keystore.jks.asc > upload-keystore.jks
 
       - name: Pub Get Packages
         run: flutter pub get
