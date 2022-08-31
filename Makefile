@@ -29,17 +29,45 @@ format:
 test:
 	$(FLUTTER) test
 
-.PHONY: build-bundle
-build-bundle:
-	$(FLUTTER) build appbundle --verbose
+.PHONY: build-bundle-all
+build-bundle-all:
+	$(FLUTTER) build appbundle --verbose --flavor agoradesk --dart-define=app.flavor=agoradesk
+	$(FLUTTER) build appbundle --verbose --flavor localmonero --dart-define=app.flavor=localmonero
 
-.PHONY: build-ios
-build-ios:
-	$(FLUTTER) build ipa --verbose
+.PHONY: build-bundle-ad
+build-bundle-ad:
+	$(FLUTTER) build appbundle --verbose --flavor agoradesk --dart-define=app.flavor=agoradesk
 
-.PHONY: build-android
-build-android:
-	$(FLUTTER) build apk --verbose
+.PHONY: build-bundle-lm
+build-bundle-lm:
+	$(FLUTTER) build appbundle --verbose --flavor localmonero --dart-define=app.flavor=localmonero
+
+.PHONY: build-ios-all
+build-ios-all:
+	$(FLUTTER) build ipa --verbose --flavor localmonero --dart-define=app.flavor=localmonero
+	mv /Users/macbook/projects/agoradesk-app-foss/build/ios/ipa/Agoradesk.ipa /Users/macbook/projects/agoradesk-app-foss/build/ios/ipa/Localmonero.ipa
+	$(FLUTTER) build ipa --verbose --flavor agoradesk --dart-define=app.flavor=agoradesk
+
+.PHONY: build-ios-ad
+build-ios-ad:
+	$(FLUTTER) build ipa --verbose --flavor agoradesk --dart-define=app.flavor=agoradesk
+
+.PHONY: build-ios-lm
+build-ios-lm:
+	$(FLUTTER) build ipa --verbose --flavor localmonero --dart-define=app.flavor=localmonero
+
+.PHONY: build-android-all
+build-android-all:
+	$(FLUTTER) build apk --verbose --flavor localmonero --dart-define=app.flavor=localmonero
+	$(FLUTTER) build apk --verbose --flavor agoradesk --dart-define=app.flavor=agoradesk
+
+.PHONY: build-android-ad
+build-android-ad:
+	$(FLUTTER) build apk --verbose --flavor agoradesk --dart-define=app.flavor=agoradesk
+
+.PHONY: build-android-lm
+build-android-lm:
+	$(FLUTTER) build apk --verbose --flavor localmonero --dart-define=app.flavor=localmonero
 
 .PHONY: internal-android
 internal-android:
