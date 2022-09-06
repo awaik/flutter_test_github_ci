@@ -1,12 +1,12 @@
 1.0.2
 
-# flutter_test_github_ci
+# flutter_test_github_ci2
 
-A new Flutter project.
+A new Flutter project2.
 
-## Getting Started
+## Getting Started2
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Flutter application2.
 
 A few resources to get you started if this is your first Flutter project:
 
