@@ -26,12 +26,9 @@ jobs:
           name: release-apk
           path: build/app/outputs/apk/release/app-release.apk
       - uses: ncipollo/release-action@v1.10.0
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.TOKEN_TEST2 }}
         with:
           artifacts: "build/app/outputs/apk/release/*.apk"
           bodyFile: "release_body.md"
-#          artifacts: "lib/main.dart"
           token: ${{ secrets.TOKEN_TEST2 }}
 
 
